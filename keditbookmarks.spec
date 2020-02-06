@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : keditbookmarks
-Version  : 19.12.1
-Release  : 16
-URL      : https://download.kde.org/stable/release-service/19.12.1/src/keditbookmarks-19.12.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/19.12.1/src/keditbookmarks-19.12.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/19.12.1/src/keditbookmarks-19.12.1.tar.xz.sig
+Version  : 19.12.2
+Release  : 17
+URL      : https://download.kde.org/stable/release-service/19.12.2/src/keditbookmarks-19.12.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/19.12.2/src/keditbookmarks-19.12.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/19.12.2/src/keditbookmarks-19.12.2.tar.xz.sig
 Summary  : Bookmark Organizer and Editor
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
@@ -102,15 +102,15 @@ man components for the keditbookmarks package.
 
 
 %prep
-%setup -q -n keditbookmarks-19.12.1
-cd %{_builddir}/keditbookmarks-19.12.1
+%setup -q -n keditbookmarks-19.12.2
+cd %{_builddir}/keditbookmarks-19.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1578614675
+export SOURCE_DATE_EPOCH=1581020187
 mkdir -p clr-build
 pushd clr-build
 # -Werror is for werrorists
@@ -127,11 +127,11 @@ make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1578614675
+export SOURCE_DATE_EPOCH=1581020187
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/keditbookmarks
-cp %{_builddir}/keditbookmarks-19.12.1/COPYING %{buildroot}/usr/share/package-licenses/keditbookmarks/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/keditbookmarks-19.12.1/COPYING.DOC %{buildroot}/usr/share/package-licenses/keditbookmarks/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/keditbookmarks-19.12.2/COPYING %{buildroot}/usr/share/package-licenses/keditbookmarks/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/keditbookmarks-19.12.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/keditbookmarks/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 pushd clr-build
 %make_install
 popd
@@ -172,6 +172,8 @@ popd
 /usr/share/doc/HTML/nl/keditbookmarks/index.docbook
 /usr/share/doc/HTML/pt/keditbookmarks/index.cache.bz2
 /usr/share/doc/HTML/pt/keditbookmarks/index.docbook
+/usr/share/doc/HTML/pt_BR/keditbookmarks/index.cache.bz2
+/usr/share/doc/HTML/pt_BR/keditbookmarks/index.docbook
 /usr/share/doc/HTML/sv/keditbookmarks/index.cache.bz2
 /usr/share/doc/HTML/sv/keditbookmarks/index.docbook
 /usr/share/doc/HTML/uk/keditbookmarks/index.cache.bz2
