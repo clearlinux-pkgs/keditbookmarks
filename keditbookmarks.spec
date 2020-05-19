@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : keditbookmarks
-Version  : 20.04.0
-Release  : 19
-URL      : https://download.kde.org/stable/release-service/20.04.0/src/keditbookmarks-20.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.0/src/keditbookmarks-20.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.0/src/keditbookmarks-20.04.0.tar.xz.sig
-Summary  : Bookmark Organizer and Editor
+Version  : 20.04.1
+Release  : 20
+URL      : https://download.kde.org/stable/release-service/20.04.1/src/keditbookmarks-20.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.1/src/keditbookmarks-20.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.1/src/keditbookmarks-20.04.1.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GFDL-1.2 GPL-2.0
 Requires: keditbookmarks-bin = %{version}-%{release}
@@ -21,6 +21,8 @@ Requires: keditbookmarks-locales = %{version}-%{release}
 Requires: keditbookmarks-man = %{version}-%{release}
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules-data
+BuildRequires : qtbase-dev
 BuildRequires : qtbase-dev mesa-dev
 
 %description
@@ -51,7 +53,6 @@ Requires: keditbookmarks-lib = %{version}-%{release}
 Requires: keditbookmarks-bin = %{version}-%{release}
 Requires: keditbookmarks-data = %{version}-%{release}
 Provides: keditbookmarks-devel = %{version}-%{release}
-Requires: keditbookmarks = %{version}-%{release}
 Requires: keditbookmarks = %{version}-%{release}
 
 %description dev
@@ -102,36 +103,35 @@ man components for the keditbookmarks package.
 
 
 %prep
-%setup -q -n keditbookmarks-20.04.0
-cd %{_builddir}/keditbookmarks-20.04.0
+%setup -q -n keditbookmarks-20.04.1
+cd %{_builddir}/keditbookmarks-20.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587681744
+export SOURCE_DATE_EPOCH=1589850496
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1587681744
+export SOURCE_DATE_EPOCH=1589850496
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/keditbookmarks
-cp %{_builddir}/keditbookmarks-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/keditbookmarks/7c203dee3a03037da436df03c4b25b659c073976
-cp %{_builddir}/keditbookmarks-20.04.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/keditbookmarks/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
+cp %{_builddir}/keditbookmarks-20.04.1/COPYING %{buildroot}/usr/share/package-licenses/keditbookmarks/7c203dee3a03037da436df03c4b25b659c073976
+cp %{_builddir}/keditbookmarks-20.04.1/COPYING.DOC %{buildroot}/usr/share/package-licenses/keditbookmarks/bd75d59f9d7d9731bfabdc48ecd19e704d218e38
 pushd clr-build
 %make_install
 popd
