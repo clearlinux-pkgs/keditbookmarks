@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : keditbookmarks
-Version  : 22.08.1
-Release  : 43
-URL      : https://download.kde.org/stable/release-service/22.08.1/src/keditbookmarks-22.08.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.08.1/src/keditbookmarks-22.08.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.08.1/src/keditbookmarks-22.08.1.tar.xz.sig
+Version  : 22.08.2
+Release  : 44
+URL      : https://download.kde.org/stable/release-service/22.08.2/src/keditbookmarks-22.08.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.08.2/src/keditbookmarks-22.08.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.08.2/src/keditbookmarks-22.08.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -103,15 +103,15 @@ man components for the keditbookmarks package.
 
 
 %prep
-%setup -q -n keditbookmarks-22.08.1
-cd %{_builddir}/keditbookmarks-22.08.1
+%setup -q -n keditbookmarks-22.08.2
+cd %{_builddir}/keditbookmarks-22.08.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1662771955
+export SOURCE_DATE_EPOCH=1665728498
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -127,7 +127,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1662771955
+export SOURCE_DATE_EPOCH=1665728498
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/keditbookmarks
 cp %{_builddir}/keditbookmarks-%{version}/CMakePresets.json.license %{buildroot}/usr/share/package-licenses/keditbookmarks/29fb05b49e12a380545499938c4879440bd8851e || :
